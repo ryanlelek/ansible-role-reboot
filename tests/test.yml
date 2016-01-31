@@ -1,5 +1,11 @@
 ---
-- hosts: localhost
-  remote_user: root
+
+- hosts: all
+  become: yes
+  tasks:
+    - name: Flag for Reboot
+      file: path=/var/run/reboot-required state=touch
+
+- hosts: all
   roles:
-    - reboot
+    - ../../
