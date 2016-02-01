@@ -1,6 +1,7 @@
 ---
 
 - name: Wait for Reboot (Vagrant)
+  become: no
   local_action: wait_for host={{ ansible_ssh_host }} port={{ ansible_ssh_port }} delay=15 state=started
   when: "'vagrant' in group_names"
 
